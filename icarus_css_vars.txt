@@ -1,0 +1,7 @@
+Key CSS variables:
+  --alpha-button-background: 1
+  --alpha-button-border: 1
+
+Font families: [ 'Calibre-Medium!important', 'Calibre!important', 'inherit' ]
+
+Hex colors: [ '#000', '#af9164', '#fff' ]

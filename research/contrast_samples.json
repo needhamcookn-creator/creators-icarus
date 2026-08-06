@@ -1,0 +1,44 @@
+[
+  {
+    "name": "feature-card-1",
+    "bg": "rgb(255, 255, 255)",
+    "textColor": "rgb(18, 18, 18)",
+    "border": "rgb(18, 18, 18)",
+    "classes": "group p-8 transition-colors hover:bg-[#f3f1ec]"
+  },
+  {
+    "name": "feature-card-2",
+    "bg": "rgb(255, 255, 255)",
+    "textColor": "rgb(18, 18, 18)",
+    "border": "rgb(18, 18, 18)",
+    "classes": "group p-8 transition-colors hover:bg-[#f3f1ec]"
+  },
+  {
+    "name": "dashboard-main-card",
+    "bg": "rgb(243, 241, 236)",
+    "textColor": "rgb(85, 85, 85)",
+    "border": "rgba(18, 18, 18, 0.15)",
+    "classes": "border p-6 lg:col-span-2"
+  },
+  {
+    "name": "dashboard-side-card",
+    "bg": "rgb(243, 241, 236)",
+    "textColor": "rgb(85, 85, 85)",
+    "border": "rgba(18, 18, 18, 0.15)",
+    "classes": "border p-6"
+  },
+  {
+    "name": "product-card-1",
+    "bg": "rgb(243, 241, 236)",
+    "textColor": null,
+    "border": "rgba(18, 18, 18, 0.15)",
+    "classes": "relative aspect-[3/4] overflow-hidden border"
+  },
+  {
+    "name": "stats-item",
+    "bg": "rgba(0, 0, 0, 0)",
+    "textColor": "rgb(18, 18, 18)",
+    "border": "rgb(18, 18, 18)",
+    "classes": "px-4 py-8 text-center md:py-10"
+  }
+]

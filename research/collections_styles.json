@@ -1,0 +1,28 @@
+{
+  "bgColors": [
+    "rgb(255, 255, 255)",
+    "rgb(18, 18, 18)",
+    "rgba(0, 0, 0, 0)",
+    "rgb(11, 11, 12)",
+    "rgb(220, 213, 203)",
+    "rgb(88, 85, 111)"
+  ],
+  "textColors": [
+    "rgb(18, 18, 18)",
+    "rgb(255, 255, 255)",
+    "rgba(18, 18, 18, 0.75)",
+    "rgb(11, 11, 12)",
+    "rgb(143, 136, 128)",
+    "rgb(0, 0, 238)",
+    "rgb(0, 0, 0)",
+    "rgb(55, 63, 71)"
+  ],
+  "fonts": [
+    "Calibre",
+    "Arial",
+    "Calibre-Medium",
+    "\"Arial Black\", \"Arial Bold\", Gadget, sans-serif",
+    "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+    "Nunito-Sans-Klaviyo-Hosted, Arial, \"Helvetica Neue\", Helvetica, sans-serif"
+  ]
+}

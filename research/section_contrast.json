@@ -1,0 +1,14 @@
+[
+  {
+    "id": "features",
+    "sectionBg": "rgba(0, 0, 0, 0)",
+    "textColor": "rgb(18, 18, 18)",
+    "sectionPadding": "128px 128px"
+  },
+  {
+    "id": "dashboard",
+    "sectionBg": "rgba(0, 0, 0, 0)",
+    "textColor": "rgb(18, 18, 18)",
+    "sectionPadding": "128px 128px"
+  }
+]

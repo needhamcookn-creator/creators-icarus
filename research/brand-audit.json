@@ -1,0 +1,211 @@
+{
+  "logo": "https://icaruswick.com/cdn/shop/files/another-one0001-0250-unscreen.gif?v=1740784497&width=600",
+  "buttons": [
+    {
+      "text": "SKIP TO CONTENT",
+      "bg": "rgb(18, 18, 18)",
+      "color": "rgb(255, 255, 255)",
+      "border": "0px none rgb(255, 255, 255)",
+      "font": "Calibre"
+    },
+    {
+      "text": "USD $ | United States",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(18, 18, 18)",
+      "border": "0px none rgb(18, 18, 18)",
+      "font": "Calibre"
+    },
+    {
+      "text": "USD $ | United States",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(18, 18, 18)",
+      "border": "0px none rgb(18, 18, 18)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XS",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "S",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "M",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "L",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XL",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XXL",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "S",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "M",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "L",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XL",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XXL",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XS",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "S",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "M",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "L",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XL",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    },
+    {
+      "text": "XXL",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(11, 11, 12)",
+      "border": "0px none rgb(11, 11, 12)",
+      "font": "Calibre"
+    }
+  ],
+  "heroSections": [
+    {
+      "tag": "SECTION",
+      "classes": "shopify-section section",
+      "text": "",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(18, 18, 18)"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "shopify-section section",
+      "text": "",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(18, 18, 18)"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "shopify-section",
+      "text": "JUST LANDED\n\nNEW ARRIVALS\nEyelet Sweatpants\n\n$118\n\nASCENT RHINESTONE HOODIE\n\n$185\n\nEyelet & Stud Sweatshirt\n\n$138\n\nASCENT RHINESTONE PANT\n\n$180\n\nAll Black Rhinestone Sweatpants\n\n$150\n\nRed Rhinestone Sweatpants\n\n$150\n\nRed Rhinestone Sweatshirt\n\n$155\n\nAll Black Rhinestone Sweatshirt\n\n$155\n\nVIEW ALL",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(18, 18, 18)"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "",
+      "text": "JUST LANDED\n\nNEW ARRIVALS\nEyelet Sweatpants\n\n$118\n\nASCENT RHINESTONE HOODIE\n\n$185\n\nEyelet & Stud Sweatshirt\n\n$138\n\nASCENT RHINESTONE PANT\n\n$180\n\nAll Black Rhinestone Sweatpants\n\n$150\n\nRed Rhinestone Sweatpants\n\n$150\n\nRed Rhinestone Sweatshirt\n\n$155\n\nAll Black Rhinestone Sweatshirt\n\n$155\n\nVIEW ALL",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(11, 11, 12)"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "shopify-section",
+      "text": "ASCENT · DROP 03\n\nShop Now",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(18, 18, 18)"
+    },
+    {
+      "tag": "SECTION",
+      "classes": "ic-banner",
+      "text": "ASCENT · DROP 03\n\nShop Now",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(18, 18, 18)"
+    }
+  ],
+  "navLinks": [
+    "AUD\n              $ |\n            Australia",
+    "EUR\n              € |\n            Austria",
+    "EUR\n              € |\n            Belgium",
+    "CAD\n              $ |\n            Canada",
+    "CZK\n              Kč |\n            Czechia",
+    "DKK\n              kr. |\n            Denmark",
+    "EUR\n              € |\n            Finland",
+    "EUR\n              € |\n            France",
+    "EUR\n              € |\n            Germany",
+    "HKD\n              $ |\n            Hong Kong SAR",
+    "EUR\n              € |\n            Ireland",
+    "ILS\n              ₪ |\n            Israel",
+    "EUR\n              € |\n            Italy",
+    "JPY\n              ¥ |\n            Japan",
+    "MYR\n              RM |\n            Malaysia",
+    "EUR\n              € |\n            Netherlands",
+    "NZD\n              $ |\n            New Zealand",
+    "USD\n              $ |\n            Norway",
+    "PLN\n              zł |\n            Poland",
+    "EUR\n              € |\n            Portugal"
+  ]
+}

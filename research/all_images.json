@@ -1,0 +1,72 @@
+[
+  {
+    "src": "https://creators-icaruswick.vercel.app/icarus-logo.gif",
+    "alt": "ICARUS",
+    "complete": true,
+    "naturalWidth": 600,
+    "naturalHeight": 338,
+    "display": "block",
+    "width": 57,
+    "height": 32
+  },
+  {
+    "src": "https://creators-icaruswick.vercel.app/homepage.webp",
+    "alt": "ICARUS creator campaign",
+    "complete": true,
+    "naturalWidth": 1536,
+    "naturalHeight": 1024,
+    "display": "block",
+    "width": 1440,
+    "height": 617
+  },
+  {
+    "src": "https://creators-icaruswick.vercel.app/products/product-1.jpg",
+    "alt": "Ascent Hoodie",
+    "complete": true,
+    "naturalWidth": 1367,
+    "naturalHeight": 2048,
+    "display": "block",
+    "width": 328,
+    "height": 438
+  },
+  {
+    "src": "https://creators-icaruswick.vercel.app/products/product-2.jpg",
+    "alt": "Rhinestone Pant",
+    "complete": true,
+    "naturalWidth": 1367,
+    "naturalHeight": 2048,
+    "display": "block",
+    "width": 328,
+    "height": 438
+  },
+  {
+    "src": "https://creators-icaruswick.vercel.app/products/product-3.jpg",
+    "alt": "Red Sweatshirt",
+    "complete": true,
+    "naturalWidth": 2726,
+    "naturalHeight": 4081,
+    "display": "block",
+    "width": 328,
+    "height": 438
+  },
+  {
+    "src": "https://creators-icaruswick.vercel.app/products/product-4.png",
+    "alt": "Statement Set",
+    "complete": true,
+    "naturalWidth": 900,
+    "naturalHeight": 900,
+    "display": "block",
+    "width": 328,
+    "height": 438
+  },
+  {
+    "src": "https://creators-icaruswick.vercel.app/icarus-logo.gif",
+    "alt": "ICARUS",
+    "complete": true,
+    "naturalWidth": 600,
+    "naturalHeight": 338,
+    "display": "block",
+    "width": 50,
+    "height": 28
+  }
+]

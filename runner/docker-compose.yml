@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  icarus-browser-runner:
+    build: .
+    container_name: icarus-browser-runner
+    ports:
+      - "3001:3001"
+      - "9222:9222"
+    environment:
+      - PORT=3001
+      - HEADLESS=true
+      - ADMIN_TOKEN=xrpxrpxrp
+      - KV_REST_API_URL=${KV_REST_API_URL}
+      - KV_REST_API_TOKEN=${KV_REST_API_TOKEN}
+    restart: always

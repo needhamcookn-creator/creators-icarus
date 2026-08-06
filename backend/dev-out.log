@@ -1,0 +1,25 @@
+
+> creators-icaruswick-backend@0.1.0 dev
+> next dev -p 3001
+
+▲ Next.js 16.2.12 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://100.112.6.208:3001
+- Environments: .env.local
+✓ Ready in 875ms
+
+ GET /api/health 200 in 525ms (next.js: 203ms, application-code: 322ms)
+▲ Next.js 16.2.12 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://100.112.6.208:3001
+- Environments: .env.local
+✓ Ready in 727ms
+
+▲ Next.js 16.2.12 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://100.112.6.208:3001
+- Environments: .env.local
+✓ Ready in 527ms
+
+ GET /health 404 in 1771ms (next.js: 1613ms, application-code: 158ms)
+ GET / 200 in 122ms (next.js: 83ms, application-code: 39ms)

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "feature-card-1",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(18, 18, 18)"
+  },
+  {
+    "name": "feature-card-2",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(18, 18, 18)"
+  },
+  {
+    "name": "dashboard-main-card",
+    "bg": "rgb(243, 241, 236)",
+    "color": "rgb(18, 18, 18)"
+  },
+  {
+    "name": "dashboard-side-card",
+    "bg": "rgb(243, 241, 236)",
+    "color": "rgb(18, 18, 18)"
+  },
+  {
+    "name": "product-card-1",
+    "bg": "rgb(243, 241, 236)",
+    "color": "rgb(18, 18, 18)"
+  },
+  {
+    "name": "stats-item",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(18, 18, 18)"
+  },
+  {
+    "name": "hero-text",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(18, 18, 18)"
+  }
+]

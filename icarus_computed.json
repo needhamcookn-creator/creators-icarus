@@ -1,0 +1,16 @@
+{
+  "bg": "rgb(255, 255, 255)",
+  "color": "rgb(18, 18, 18)",
+  "font": "Calibre",
+  "--color-background": "255,255,255",
+  "--color-foreground": "18,18,18",
+  "--color-secondary-button": "255,255,255",
+  "--color-secondary-button-text": "18,18,18",
+  "--gradient-background": "#ffffff",
+  "--font-heading-family": "\"Bodoni Moda\", serif",
+  "--font-body-family": "\"Bodoni Moda\", serif",
+  "--font-body-scale": "1.0",
+  "--buttons-radius": "0px",
+  "--buttons-border-width": "2px",
+  "--inputs-radius": "0px"
+}

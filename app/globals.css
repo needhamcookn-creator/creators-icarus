@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --icarus-white: #ffffff;
+  --icarus-black: #121212;
+  --icarus-cream: #f3f1ec;
+  --icarus-muted: #555555;
+  --icarus-accent: #af9164;
+  --icarus-border: rgba(18, 18, 18, 0.15);
+}
+
+body {
+  background-color: var(--icarus-white);
+  color: var(--icarus-black);
+  font-family: "Bodoni Moda", "Bodoni MT", Didot, "Didot LT STD", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-sans {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.font-bodoni {
+  font-family: "Bodoni Moda", "Bodoni MT", Didot, "Didot LT STD", Georgia, serif;
+}
+
+::selection {
+  background-color: var(--icarus-black);
+  color: var(--icarus-white);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input,
+button {
+  border-radius: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--icarus-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--icarus-muted);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--icarus-black);
+}
