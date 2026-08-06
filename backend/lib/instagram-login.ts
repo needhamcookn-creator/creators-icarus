@@ -233,13 +233,28 @@ async function submitTwoFactorCode(
   try {
     await page.bringToFront().catch(() => undefined);
 
-    const codeInput = page
+    // First check if a Continue / Send Code prompt button is blocking the input field
+    const promptBtn = page
+      .locator('button:has-text("Continue"), button:has-text("Next"), button:has-text("Send Code")')
+      .first();
+    if (await promptBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await promptBtn.click({ force: true }).catch(() => undefined);
+      await page.waitForTimeout(1500);
+    }
+
+    let codeInput = page
       .locator(
-        'input[name="verificationCode"], input[name="security_code"], input[name="code"], input[inputmode="numeric"], input[aria-label*="code" i]'
+        'input[name="approvals_code"], input[name="verificationCode"], input[name="security_code"], input[name="code"], input[inputmode="numeric"], input[aria-label*="code" i], input[type="text"], input[type="number"]'
       )
       .first();
 
-    const inputVisible = await codeInput.isVisible({ timeout: 8000 }).catch(() => false);
+    let inputVisible = await codeInput.isVisible({ timeout: 6000 }).catch(() => false);
+    if (!inputVisible) {
+      // Fallback to any visible input element on Instagram's challenge page
+      codeInput = page.locator("input").first();
+      inputVisible = await codeInput.isVisible({ timeout: 3000 }).catch(() => false);
+    }
+
     if (!inputVisible) {
       const shot = await captureScreenshot(page);
       await activeSessionPool.patchSession(sid, { lastScreenshotBase64: shot, lastUpdated: Date.now() });

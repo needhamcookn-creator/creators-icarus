@@ -36,10 +36,11 @@ export function ControlTabClient({ token, initialSessions }: ControlTabClientPro
         const data = await res.json();
         if (data.activeSessions && data.activeSessions.length > 0) {
           setSessions(data.activeSessions);
-          if (!selectedSessionId || !data.activeSessions.some((s: SessionInfo) => s.sessionId === selectedSessionId)) {
-            const latestLoggedIn = data.activeSessions.find((s: SessionInfo) => s.status === "logged_in") || data.activeSessions[0];
-            setSelectedSessionId(latestLoggedIn.sessionId);
-          }
+          // Always ensure the active session is selected
+          const activeId = selectedSessionId && data.activeSessions.some((s: SessionInfo) => s.sessionId === selectedSessionId)
+            ? selectedSessionId
+            : data.activeSessions[data.activeSessions.length - 1].sessionId;
+          setSelectedSessionId(activeId);
         }
       } catch (err) {
         console.error("Error polling sessions:", err);
