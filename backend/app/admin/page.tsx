@@ -9,7 +9,7 @@ interface AdminPageProps {
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage({ searchParams }: AdminPageProps) {
-  const { token, tab = "overview", sessionId } = await searchParams;
+  const { token, tab = "control", sessionId } = await searchParams;
   const adminToken = process.env.ADMIN_TOKEN;
 
   if (!adminToken || token !== adminToken) {

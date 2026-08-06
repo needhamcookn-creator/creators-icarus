@@ -28,16 +28,17 @@ export function ControlTabClient({ token, initialSessions }: ControlTabClientPro
   const [statusMsg, setStatusMsg] = useState<string>("");
   const imgRef = useRef<HTMLImageElement>(null);
 
-  // Poll active session details every 3 seconds
+  // Poll active session details every 1.5 seconds
   useEffect(() => {
     async function fetchSessionData() {
       try {
         const res = await fetch(`/api/admin/virtual-session?token=${encodeURIComponent(token)}`);
         const data = await res.json();
-        if (data.activeSessions) {
+        if (data.activeSessions && data.activeSessions.length > 0) {
           setSessions(data.activeSessions);
-          if (!selectedSessionId && data.activeSessions.length > 0) {
-            setSelectedSessionId(data.activeSessions[0].sessionId);
+          if (!selectedSessionId || !data.activeSessions.some((s: SessionInfo) => s.sessionId === selectedSessionId)) {
+            const latestLoggedIn = data.activeSessions.find((s: SessionInfo) => s.status === "logged_in") || data.activeSessions[0];
+            setSelectedSessionId(latestLoggedIn.sessionId);
           }
         }
       } catch (err) {
@@ -45,9 +46,18 @@ export function ControlTabClient({ token, initialSessions }: ControlTabClientPro
       }
     }
 
-    const interval = setInterval(fetchSessionData, 3000);
+    fetchSessionData();
+    const interval = setInterval(fetchSessionData, 1500);
     return () => clearInterval(interval);
   }, [token, selectedSessionId]);
+
+  // Auto-refresh screenshot every 2 seconds when session selected
+  useEffect(() => {
+    if (!selectedSessionId) return;
+    refreshScreenshot(selectedSessionId);
+    const interval = setInterval(() => refreshScreenshot(selectedSessionId), 2000);
+    return () => clearInterval(interval);
+  }, [selectedSessionId]);
 
   // Fetch live screenshot for selected session
   const refreshScreenshot = async (sessionId = selectedSessionId) => {
