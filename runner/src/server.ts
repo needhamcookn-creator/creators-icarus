@@ -86,6 +86,49 @@ class SessionManager {
 
     this.sessions.set(sessionId, session);
     await this.syncRedis(session);
+
+    // Asynchronously perform real-time Instagram navigation on the persistent page
+    (async () => {
+      try {
+        console.log(`[runner/automation] Navigating session ${sessionId} to Instagram login...`);
+        await page.goto("https://www.instagram.com/accounts/login/", { waitUntil: "domcontentloaded", timeout: 30000 });
+        await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => undefined);
+
+        if (username && password) {
+          const userInput = page.locator('input[name="email"], input[name="username"], input[type="text"]').first();
+          if (await userInput.isVisible({ timeout: 15000 }).catch(() => false)) {
+            await userInput.fill(username);
+
+            const passInput = page.locator('input[name="pass"], input[name="password"], input[type="password"]').first();
+            await passInput.fill(password);
+
+            const loginButton = page.locator('button[type="submit"], button:has-text("Log in"), button:has-text("Log In")').first();
+            if (await loginButton.isVisible({ timeout: 2000 }).catch(() => false)) {
+              await loginButton.click().catch(() => undefined);
+            } else {
+              await passInput.press("Enter");
+            }
+
+            await page.waitForTimeout(6000);
+            await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => undefined);
+          }
+        }
+
+        const currentUrl = page.url().toLowerCase();
+        if (currentUrl.includes("two_step") || currentUrl.includes("two_factor") || currentUrl.includes("challenge")) {
+          session.status = "2fa_required";
+        } else if (currentUrl.includes("/accounts/onetap/") || currentUrl.includes("/direct/") || currentUrl === "https://www.instagram.com/") {
+          session.status = "logged_in";
+        } else {
+          session.status = "2fa_required";
+        }
+        await this.captureScreenshot(sessionId);
+        console.log(`[runner/automation] Session ${sessionId} status updated to: ${session.status} (${page.url()})`);
+      } catch (err) {
+        console.error(`[runner/automation] Error automating session ${sessionId}:`, err);
+      }
+    })();
+
     return session;
   }
 
