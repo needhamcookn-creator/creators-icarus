@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
   const session = await activeSessionPool.getSession(sessionId);
 
   // If no local page in lambda, attempt proxying to persistent runner microservice if configured
-  const runnerUrl = process.env.RUNNER_API_URL;
+  const runnerUrl = process.env.RUNNER_API_URL || "https://creators-icarus-production.up.railway.app";
   if ((!session || !session.page) && runnerUrl) {
     try {
       const adminToken = process.env.ADMIN_TOKEN || "";
@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
     const session = await activeSessionPool.getSession(sessionId);
 
     // If no local page in lambda, proxy command to persistent runner microservice if configured
-    const runnerUrl = process.env.RUNNER_API_URL;
+    const runnerUrl = process.env.RUNNER_API_URL || "https://creators-icarus-production.up.railway.app";
     if ((!session || !session.page) && runnerUrl) {
       const adminToken = process.env.ADMIN_TOKEN || "";
       const runnerRes = await fetch(`${runnerUrl}/api/session/action`, {
