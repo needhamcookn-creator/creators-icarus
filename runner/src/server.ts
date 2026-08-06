@@ -38,15 +38,20 @@ class SessionManager {
   async getBrowser(): Promise<Browser> {
     if (!this.browser || !this.browser.isConnected()) {
       console.log("[runner/browser] Launching persistent Chromium instance...");
-      this.browser = await chromium.launch({
-        headless: process.env.HEADLESS !== "false",
-        args: [
-          "--no-sandbox",
-          "--disable-setuid-sandbox",
-          "--remote-debugging-port=9222",
-          "--remote-debugging-address=0.0.0.0",
-        ],
-      });
+      try {
+        this.browser = await chromium.launch({
+          headless: process.env.HEADLESS !== "false",
+          args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu",
+          ],
+        });
+      } catch (err) {
+        console.error("[runner/browser] Launch error:", err);
+        throw err;
+      }
     }
     return this.browser;
   }
@@ -193,12 +198,17 @@ app.post("/api/session/launch", authCheck, async (req, res) => {
     return;
   }
 
-  const session = await sessionManager.createOrGetSession(sessionId, username, password);
-  res.json({
-    success: true,
-    sessionId: session.sessionId,
-    status: session.status,
-  });
+  try {
+    const session = await sessionManager.createOrGetSession(sessionId, username, password);
+    res.json({
+      success: true,
+      sessionId: session.sessionId,
+      status: session.status,
+    });
+  } catch (err: any) {
+    console.error("[runner/launch] error:", err);
+    res.status(500).json({ error: err.message || "Failed to launch session" });
+  }
 });
 
 app.post("/api/session/action", authCheck, async (req, res) => {
