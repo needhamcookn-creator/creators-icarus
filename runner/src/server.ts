@@ -226,7 +226,26 @@ app.get("/health", (_req, res) => {
   });
 });
 
-app.get("/api/sessions", authCheck, async (_req, res) => {
+app.get("/api/sessions", authCheck, async (req, res) => {
+  const sessionId = req.query.sessionId as string | undefined;
+
+  if (sessionId) {
+    const session = sessionManager.getSession(sessionId);
+    if (!session || !session.page || session.page.isClosed()) {
+      res.status(404).json({ error: "Active session not found" });
+      return;
+    }
+    const screenshotBase64 = (await sessionManager.captureScreenshot(sessionId)) || session.lastScreenshotBase64;
+    res.json({
+      sessionId: session.sessionId,
+      username: session.username,
+      status: session.status,
+      url: session.page.url(),
+      screenshotBase64,
+    });
+    return;
+  }
+
   const sessions = sessionManager.getAllSessions().map((s) => ({
     sessionId: s.sessionId,
     username: s.username,
@@ -234,6 +253,7 @@ app.get("/api/sessions", authCheck, async (_req, res) => {
     lastUpdated: s.lastUpdated,
     hasPage: Boolean(s.page && !s.page.isClosed()),
     url: s.page && !s.page.isClosed() ? s.page.url() : undefined,
+    lastScreenshotBase64: s.lastScreenshotBase64,
   }));
   res.json({ activeSessions: sessions });
 });

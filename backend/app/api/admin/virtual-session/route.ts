@@ -32,7 +32,8 @@ export async function GET(request: NextRequest) {
   if ((!session || !session.page) && runnerUrl) {
     try {
       const adminToken = process.env.ADMIN_TOKEN || "";
-      const res = await fetch(`${runnerUrl}/api/sessions?token=${encodeURIComponent(adminToken)}`, {
+      const queryStr = sessionId ? `token=${encodeURIComponent(adminToken)}&sessionId=${encodeURIComponent(sessionId)}` : `token=${encodeURIComponent(adminToken)}`;
+      const res = await fetch(`${runnerUrl}/api/sessions?${queryStr}`, {
         headers: { "x-admin-token": adminToken },
       });
       const data = await res.json();
