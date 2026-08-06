@@ -253,18 +253,20 @@ async function submitTwoFactorCode(
       };
     }
 
-    await codeInput.fill(twoFactorCode.trim());
-    devLogs.info("2fa", `Filled 2FA code for @${username}, submitting`, { sessionId: sid });
-    await page.waitForTimeout(400);
+    await codeInput.click({ force: true }).catch(() => undefined);
+    await page.keyboard.press("Control+A").catch(() => undefined);
+    await page.keyboard.press("Backspace").catch(() => undefined);
+    await page.keyboard.type(twoFactorCode.trim(), { delay: 150 });
+    devLogs.info("2fa", `Typed 2FA code (${twoFactorCode.trim()}) for @${username}, submitting`, { sessionId: sid });
+    await page.waitForTimeout(500);
 
     const confirmButton = page
-      .locator('button[type="submit"], button:has-text("Confirm"), button:has-text("Submit")')
+      .locator('button[type="submit"], button:has-text("Confirm"), button:has-text("Submit"), button:has-text("Continue")')
       .first();
     if (await confirmButton.isVisible({ timeout: 2000 }).catch(() => false)) {
-      await confirmButton.click().catch(() => undefined);
-    } else {
-      await codeInput.press("Enter");
+      await confirmButton.click({ force: true }).catch(() => undefined);
     }
+    await page.keyboard.press("Enter").catch(() => undefined);
 
     await page.waitForTimeout(6000);
     await page.waitForLoadState("networkidle", { timeout: 8000 }).catch(() => undefined);

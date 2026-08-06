@@ -231,8 +231,12 @@ app.post("/api/session/action", authCheck, async (req, res) => {
       await page.mouse.click(x, y);
       await page.waitForTimeout(500);
     } else if (action === "type" && typeof text === "string") {
-      await page.keyboard.type(text, { delay: 50 });
-      await page.waitForTimeout(400);
+      await page.keyboard.type(text, { delay: 150 });
+      await page.waitForTimeout(500);
+      if (/^\d{6}$/.test(text.trim())) {
+        await page.keyboard.press("Enter").catch(() => undefined);
+        await page.waitForTimeout(3000);
+      }
     } else if (action === "press" && typeof key === "string") {
       await page.keyboard.press(key);
       await page.waitForTimeout(400);
